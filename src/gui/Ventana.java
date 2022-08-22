@@ -22,6 +22,7 @@ public class Ventana extends JFrame {
 	private JMenu mnCliente;
 	private JMenuItem mnitClienteListar;
 	private JMenuBar menuBar;
+	private JMenuItem mnitClientesListar;
 
 	/**
 	 * Launch the application.
@@ -54,7 +55,7 @@ public class Ventana extends JFrame {
 		
 		menuBar.add(mnCliente);
 		
-		JMenuItem mnitClientesListar = new JMenuItem("Listar");
+		mnitClientesListar = new JMenuItem("Listar");
 		mnitClientesListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostarVentanaClientes();
