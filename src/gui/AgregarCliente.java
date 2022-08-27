@@ -11,6 +11,8 @@ import modelo.Persona;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -88,9 +90,11 @@ public class AgregarCliente extends JInternalFrame {
 			String edadString = textEdad.getText();
 			int edad = Integer.parseInt(edadString);
 			Persona persona = new Persona(edad, nombre);
-			
+			 JOptionPane.showMessageDialog(null, "Hello World");
+
 		} catch (Exception e) {
 			// TODO: handle exception
+			 JOptionPane.showMessageDialog(null, "la edad no puede ser negativa");
 		}
 
 	}
