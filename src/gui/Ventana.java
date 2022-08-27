@@ -52,22 +52,31 @@ public class Ventana extends JFrame {
 		setJMenuBar(menuBar);
 
 		mnCliente = new JMenu("Cliente");
-		
+
 		menuBar.add(mnCliente);
-		
+
 		mnitClientesListar = new JMenuItem("Listar");
 		mnitClientesListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostarVentanaClientes();
 			}
 
-			
 		});
 		mnCliente.add(mnitClientesListar);
+		
+		JMenuItem mnitAgregarCliente = new JMenuItem("AgregarCliente");
+		mnitAgregarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				verAgregarCliente();
+			}
+
+			
+		});
+		mnCliente.add(mnitAgregarCliente);
 
 		mnitClienteListar = new JMenuItem("Listar");
-		//mnitClienteListar.addActionListener(this);
-		//mnCliente.add(mnitClienteListar);
+		// mnitClienteListar.addActionListener(this);
+		// mnCliente.add(mnitClienteListar);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -77,11 +86,18 @@ public class Ventana extends JFrame {
 		dk.setBackground(SystemColor.activeCaption);
 		contentPane.add(dk, BorderLayout.CENTER);
 	}
+
 	private void mostarVentanaClientes() {
 		// TODO Auto-generated method stub
-		ClienteListar ventana= new ClienteListar();
+		ClienteListar ventana = new ClienteListar();
 		ventana.setVisible(true);
 		dk.add(ventana);
-		
+
+	}
+	private void verAgregarCliente() {
+		// TODO Auto-generated method stub
+		AgregarCliente ventana = new AgregarCliente();
+		ventana.setVisible(true);
+		dk.add(ventana);
 	}
 }
