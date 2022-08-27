@@ -63,14 +63,13 @@ public class Ventana extends JFrame {
 
 		});
 		mnCliente.add(mnitClientesListar);
-		
+
 		JMenuItem mnitAgregarCliente = new JMenuItem("AgregarCliente");
 		mnitAgregarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				verAgregarCliente();
 			}
 
-			
 		});
 		mnCliente.add(mnitAgregarCliente);
 
@@ -94,6 +93,7 @@ public class Ventana extends JFrame {
 		dk.add(ventana);
 
 	}
+
 	private void verAgregarCliente() {
 		// TODO Auto-generated method stub
 		AgregarCliente ventana = new AgregarCliente();
