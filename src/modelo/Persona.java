@@ -4,7 +4,7 @@ public class Persona {
 	private int edad;
 	private String nombre;
 
-	private static int idsig = 0;
+	private static int idsig = 1;
 
 	public Persona(int edad, String nombre) throws Exception {
 		super();
@@ -14,6 +14,7 @@ public class Persona {
 
 		this.edad = edad;
 		this.nombre = nombre;
+		idsig++;
 	}
 
 }

@@ -90,11 +90,10 @@ public class AgregarCliente extends JInternalFrame {
 			String edadString = textEdad.getText();
 			int edad = Integer.parseInt(edadString);
 			Persona persona = new Persona(edad, nombre);
-			 JOptionPane.showMessageDialog(null, "Hello World");
-
+			JOptionPane.showMessageDialog(null, "Hello World");
 		} catch (Exception e) {
 			// TODO: handle exception
-			 JOptionPane.showMessageDialog(null, "la edad no puede ser negativa");
+			JOptionPane.showMessageDialog(null, "la edad no puede ser negativa");
 		}
 
 	}
