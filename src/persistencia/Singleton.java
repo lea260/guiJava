@@ -20,7 +20,6 @@ public class Singleton {
 			instancia.listaP.add(new PerosonaDto(2, 66, "Pedro"));
 			instancia.listaP.add(new PerosonaDto(1, 25, "Maria"));
 			instancia.listaP.add(new PerosonaDto(1, 25, "Sofia"));
-
 		}
 		return instancia;
 	}
