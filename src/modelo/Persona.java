@@ -2,6 +2,8 @@ package modelo;
 
 import java.util.ArrayList;
 import entidades.*;
+import persistencia.FakeRepositorioPersona;
+import persistencia.IPersona;
 
 public class Persona {
 	private int edad;
@@ -26,7 +28,8 @@ public class Persona {
 
 	public ArrayList<PersonaDto> listar() {
 		ArrayList<PersonaDto> lista = new ArrayList<PersonaDto>();
-		
+		IPersona rep = new FakeRepositorioPersona();
+		lista = rep.listar();
 		return lista;
 	}
 
