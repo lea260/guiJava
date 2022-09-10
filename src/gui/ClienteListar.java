@@ -6,10 +6,15 @@ import javax.swing.DefaultFocusManager;
 import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import entidades.PersonaDto;
+import modelo.Persona;
+
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ClienteListar extends JInternalFrame {
@@ -18,6 +23,7 @@ public class ClienteListar extends JInternalFrame {
 	private JScrollPane scrollPane;
 	private JPanel panel;
 	private JButton btnDatos;
+	private ArrayList<PersonaDto> lista;
 
 	/**
 	 * Launch the application.
@@ -94,6 +100,25 @@ public class ClienteListar extends JInternalFrame {
 		for (int i = cant - 1; i >= 0; i--) {
 			dtm.removeRow(i);
 		}
-
 	}
+
+	private void cargarPersonas() {
+		try {
+			Persona persona = new Persona();
+			/* carga la lista de personas del modelo */
+			this.lista = persona.listar();
+			/* usar el DefaultTableModel(dtm) parad cargar los datos */
+			actualizarTabla();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void actualizarTabla() {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
 }

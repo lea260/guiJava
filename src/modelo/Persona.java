@@ -1,5 +1,8 @@
 package modelo;
 
+import java.util.ArrayList;
+import entidades.*;
+
 public class Persona {
 	private int edad;
 	private String nombre;
@@ -15,6 +18,15 @@ public class Persona {
 		this.edad = edad;
 		this.nombre = nombre;
 		idsig++;
+	}
+
+	public Persona() throws Exception {
+		this(0, "");
+	}
+
+	public ArrayList<PersonaDto> listar() {
+		ArrayList<PersonaDto> lista = new ArrayList<PersonaDto>();
+		return lista;
 	}
 
 }
