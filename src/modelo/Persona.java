@@ -26,6 +26,7 @@ public class Persona {
 
 	public ArrayList<PersonaDto> listar() {
 		ArrayList<PersonaDto> lista = new ArrayList<PersonaDto>();
+		
 		return lista;
 	}
 

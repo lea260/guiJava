@@ -117,7 +117,6 @@ public class ClienteListar extends JInternalFrame {
 
 	private void actualizarTabla() {
 		// TODO Auto-generated method stub
-//dfd
 	}
 
 }

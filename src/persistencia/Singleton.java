@@ -18,10 +18,14 @@ public class Singleton {
 			instancia.listaP = new ArrayList<PersonaDto>();
 			instancia.listaP.add(new PersonaDto(1, 25, "Juan"));
 			instancia.listaP.add(new PersonaDto(2, 66, "Pedro"));
-			instancia.listaP.add(new PersonaDto(1, 25, "Maria"));
-			instancia.listaP.add(new PersonaDto(1, 25, "Sofia"));
+			instancia.listaP.add(new PersonaDto(3, 25, "Maria"));
+			instancia.listaP.add(new PersonaDto(4, 25, "Sofia"));
 		}
 		return instancia;
+	}
+
+	public ArrayList<PersonaDto> listarP() {
+		return listaP;
 	}
 
 }
