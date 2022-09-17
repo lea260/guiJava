@@ -16,21 +16,21 @@ public class FakeRepositorioPersona implements IPersona {
 	}
 
 	@Override
-	public int crear() {
+	public int crear(PersonaDto persona) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int eliminar() {
+	public boolean eliminar(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override
-	public int actualizar() {
+	public boolean actualizar(PersonaDto persona) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 }

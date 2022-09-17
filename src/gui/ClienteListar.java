@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -54,8 +55,8 @@ public class ClienteListar extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		dtm.addColumn("ID");
+		dtm.addColumn("Edad");
 		dtm.addColumn("Nombre");
-		dtm.addColumn("Salario");
 
 		// String column[] = { "ID", "NAME", "SALARY" };
 
@@ -86,11 +87,20 @@ public class ClienteListar extends JInternalFrame {
 	}
 
 	private void cargarDatos() {
-		// TODO Auto-generated method stub
-		dtm.addRow(new String[] { "101", "Amit", "670000" });
-		dtm.addRow(new String[] { "102", "Jai", "780000" });
-		dtm.addRow(new String[] { "103", "Sachin", "700000" });
-		dtm.addRow(new String[] { "104", "Sachin05", "77000" });
+
+		try {
+			Persona persona = new Persona();
+			lista = persona.listar();
+			for (PersonaDto item : lista) {
+				String[] fila = new String[3];
+				fila[0] = String.valueOf(item.getId());
+				fila[1] = String.valueOf(item.getEdad());
+				fila[2] = String.valueOf(item.getNombre());
+				dtm.addRow(fila);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 	}
 
