@@ -90,6 +90,7 @@ public class AgregarCliente extends JInternalFrame {
 			String edadString = textEdad.getText();
 			int edad = Integer.parseInt(edadString);
 			Persona persona = new Persona(edad, nombre);
+			int id = persona.crear();
 			JOptionPane.showMessageDialog(null, "Hello World");
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -1,6 +1,9 @@
 package modelo;
 
 import java.util.ArrayList;
+
+import javax.swing.RepaintManager;
+
 import entidades.*;
 import persistencia.FakeRepositorioPersona;
 import persistencia.IPersona;
@@ -31,6 +34,19 @@ public class Persona {
 		IPersona rep = new FakeRepositorioPersona();
 		lista = rep.listar();
 		return lista;
+	}
+
+	public int crear() {
+		// TODO Auto-generated method stub
+		IPersona rep = new FakeRepositorioPersona();
+		int id = rep.crear(this.getDto());
+		return id;
+	}
+
+	private PersonaDto getDto() {
+		// TODO Auto-generated method stub
+		PersonaDto dto = new PersonaDto(0, edad, nombre);
+		return dto;
 	}
 
 }
