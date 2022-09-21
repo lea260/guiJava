@@ -18,7 +18,12 @@ public class FakeRepositorioPersona implements IPersona {
 	@Override
 	public int crear(PersonaDto persona) {
 		// TODO Auto-generated method stub
-		return 0;
+		ArrayList<PersonaDto> lista = new ArrayList<PersonaDto>();
+		Singleton sin = Singleton.getInstancia();
+		lista = sin.listarP();
+		persona.setId(Singleton.PersonaId++);
+		lista.add(persona);
+		return persona.getId();
 	}
 
 	@Override
@@ -30,7 +35,24 @@ public class FakeRepositorioPersona implements IPersona {
 	@Override
 	public boolean actualizar(PersonaDto persona) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean encontrado = false;
+		ArrayList<PersonaDto> lista = new ArrayList<PersonaDto>();
+		Singleton sin = Singleton.getInstancia();
+		lista = sin.listarP();
+		int i = 0;
+		int pos = 0;
+		while (!encontrado && i < lista.size()) {
+			if (lista.get(i).getId() == persona.getId()) {
+				encontrado = true;
+				pos = i;
+			}
+			i++;
+		}
+		if (encontrado) {
+			lista.get(pos).setEdad(persona.getEdad());
+			lista.get(pos).setNombre(persona.getNombre());
+		}
+		return encontrado;
 	}
 
 }

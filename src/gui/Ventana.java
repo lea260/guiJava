@@ -2,18 +2,20 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.BoxLayout;
-import javax.swing.JDesktopPane;
-import java.awt.SystemColor;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import entidades.PersonaDto;
+import gui.AgregarCliente.Modo;
 
 public class Ventana extends JFrame {
 
@@ -88,15 +90,22 @@ public class Ventana extends JFrame {
 
 	private void mostarVentanaClientes() {
 		// TODO Auto-generated method stub
-		ClienteListar ventana = new ClienteListar();
+		ClienteListar ventana = new ClienteListar(this);
 		ventana.setVisible(true);
 		dk.add(ventana);
 
 	}
 
-	private void verAgregarCliente() {
+	public void verAgregarCliente() {
 		// TODO Auto-generated method stub
-		AgregarCliente ventana = new AgregarCliente();
+		AgregarCliente ventana = new AgregarCliente(Modo.AGREGAR, null);
+		ventana.setVisible(true);
+		dk.add(ventana);
+	}
+
+	public void verEditarCliente(PersonaDto personaDto) {
+		// TODO Auto-generated method stub
+		AgregarCliente ventana = new AgregarCliente(Modo.EDITAR, personaDto);
 		ventana.setVisible(true);
 		dk.add(ventana);
 	}

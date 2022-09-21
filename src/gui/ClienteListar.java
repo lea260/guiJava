@@ -1,22 +1,21 @@
 package gui;
 
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-import javax.swing.DefaultFocusManager;
+import javax.security.auth.Refreshable;
+import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import entidades.PersonaDto;
 import modelo.Persona;
-
-import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.nio.file.FileAlreadyExistsException;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
 
 public class ClienteListar extends JInternalFrame {
 	private JTable table;
@@ -25,33 +24,19 @@ public class ClienteListar extends JInternalFrame {
 	private JPanel panel;
 	private JButton btnDatos;
 	private ArrayList<PersonaDto> lista;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ClienteListar frame = new ClienteListar();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private Ventana ventana;
 
 	/**
 	 * Create the frame.
 	 */
-	public ClienteListar() {
+	public ClienteListar(Ventana ven) {
+		this.ventana = ven;
 		setClosable(true);
 		table = new JTable();
 
 		dtm = new DefaultTableModel();
 		setTitle("Lista Clientes");
-		setBounds(50, 0, 800, 800);
+		setBounds(50, 0, 800, 600);
 		getContentPane().setLayout(null);
 
 		dtm.addColumn("ID");
@@ -65,6 +50,8 @@ public class ClienteListar extends JInternalFrame {
 		getContentPane().add(scrollPane);
 		table = new JTable();
 		table.setModel(dtm);
+		/* seleccione de una sola fila */
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
 
 		panel = new JPanel();
@@ -75,8 +62,13 @@ public class ClienteListar extends JInternalFrame {
 
 		panel.add(btnDatos);
 
-		JButton btnNewButton = new JButton("New button");
-		panel.add(btnNewButton);
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editar();
+			}
+		});
+		panel.add(btnEditar);
 		cargarDatos();
 		btnDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -86,8 +78,17 @@ public class ClienteListar extends JInternalFrame {
 		});
 	}
 
-	private void cargarDatos() {
+	protected void editar() {
+		// TODO Auto-generated method stub
+		int fila = table.getSelectedRow();
+		int id = lista.get(fila).getId();
+		JOptionPane.showMessageDialog(null, "Persona creada con id:" + id);
+		PersonaDto dto = lista.get(fila);
+		this.ventana.verEditarCliente(dto);
 
+	}
+
+	private void cargarDatos() {
 		try {
 			Persona persona = new Persona();
 			lista = persona.listar();
@@ -112,21 +113,9 @@ public class ClienteListar extends JInternalFrame {
 		}
 	}
 
-	private void cargarPersonas() {
-		try {
-			Persona persona = new Persona();
-			/* carga la lista de personas del modelo */
-			this.lista = persona.listar();
-			/* usar el DefaultTableModel(dtm) parad cargar los datos */
-			actualizarTabla();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	private void actualizarTabla() {
-		// TODO Auto-generated method stub
+	public void recargar() {
+		borrarTodo();
+		cargarDatos();
 	}
 
 }

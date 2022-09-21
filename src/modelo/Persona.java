@@ -2,17 +2,14 @@ package modelo;
 
 import java.util.ArrayList;
 
-import javax.swing.RepaintManager;
-
-import entidades.*;
+import entidades.PersonaDto;
 import persistencia.FakeRepositorioPersona;
 import persistencia.IPersona;
 
 public class Persona {
+	private int id;
 	private int edad;
 	private String nombre;
-
-	private static int idsig = 1;
 
 	public Persona(int edad, String nombre) throws Exception {
 		super();
@@ -22,11 +19,19 @@ public class Persona {
 
 		this.edad = edad;
 		this.nombre = nombre;
-		idsig++;
+
 	}
 
 	public Persona() throws Exception {
 		this(0, "");
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public ArrayList<PersonaDto> listar() {
@@ -45,8 +50,15 @@ public class Persona {
 
 	private PersonaDto getDto() {
 		// TODO Auto-generated method stub
-		PersonaDto dto = new PersonaDto(0, edad, nombre);
+		PersonaDto dto = new PersonaDto(this.id, edad, nombre);
 		return dto;
+	}
+
+	public boolean actualizar() {
+		// TODO Auto-generated method stub
+		IPersona rep = new FakeRepositorioPersona();
+		boolean resultado = rep.actualizar(this.getDto());
+		return resultado;
 	}
 
 }

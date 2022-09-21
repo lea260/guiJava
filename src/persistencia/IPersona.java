@@ -22,5 +22,7 @@ public interface IPersona {
 	 * elimna la Persona de id pasado como parametro
 	 */
 	boolean actualizar(PersonaDto persona);
+	
+	
 
 }

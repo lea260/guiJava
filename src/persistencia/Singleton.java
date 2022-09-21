@@ -7,6 +7,7 @@ import entidades.PersonaDto;
 public class Singleton {
 	private static Singleton instancia = null;
 	private ArrayList<PersonaDto> listaP;
+	public static int PersonaId = 5;
 
 	private Singleton() {
 
