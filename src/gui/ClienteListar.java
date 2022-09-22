@@ -22,7 +22,6 @@ public class ClienteListar extends JInternalFrame {
 	private DefaultTableModel dtm;
 	private JScrollPane scrollPane;
 	private JPanel panel;
-	private JButton btnDatos;
 	private ArrayList<PersonaDto> lista;
 	private Ventana ventana;
 
@@ -58,9 +57,9 @@ public class ClienteListar extends JInternalFrame {
 		panel.setBounds(73, 304, 600, 86);
 		getContentPane().add(panel);
 
-		btnDatos = new JButton("Eliminar Todo");
+		JButton btnEliminar = new JButton("Eliminar");
 
-		panel.add(btnDatos);
+		panel.add(btnEliminar);
 
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.addActionListener(new ActionListener() {
@@ -70,7 +69,7 @@ public class ClienteListar extends JInternalFrame {
 		});
 		panel.add(btnEditar);
 		cargarDatos();
-		btnDatos.addActionListener(new ActionListener() {
+		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				eliminar();
 				recargar();
