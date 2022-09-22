@@ -29,7 +29,23 @@ public class FakeRepositorioPersona implements IPersona {
 	@Override
 	public boolean eliminar(int id) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean encontrado = false;
+		ArrayList<PersonaDto> lista = new ArrayList<PersonaDto>();
+		Singleton sin = Singleton.getInstancia();
+		lista = sin.listarP();
+		int i = 0;
+		int pos = 0;
+		while (!encontrado && i < lista.size()) {
+			if (lista.get(i).getId() == id) {
+				encontrado = true;
+				pos = i;
+			}
+			i++;
+		}
+		if (encontrado) {
+			lista.remove(pos);
+		}
+		return encontrado;
 	}
 
 	@Override

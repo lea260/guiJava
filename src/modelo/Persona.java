@@ -61,4 +61,11 @@ public class Persona {
 		return resultado;
 	}
 
+	public boolean eliminar() {
+		// TODO Auto-generated method stub
+		IPersona rep = new FakeRepositorioPersona();
+		boolean resultado = rep.eliminar(id);
+		return resultado;
+	}
+
 }

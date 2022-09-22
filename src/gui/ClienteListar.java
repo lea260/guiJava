@@ -72,10 +72,39 @@ public class ClienteListar extends JInternalFrame {
 		cargarDatos();
 		btnDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				borrarTodo();
+				eliminar();
+				recargar();
+				// borrarTodo();
 			}
 
 		});
+	}
+
+	protected void eliminar() {
+		// TODO Auto-generated method stub
+		int fila = table.getSelectedRow();
+		int id = lista.get(fila).getId();
+		JOptionPane.showMessageDialog(null, "Persona creada con id:" + id);
+		if (fila >= 0) {
+			try {
+				int input = JOptionPane.showConfirmDialog(null, "quieres eliminar a la persona cliente con id: " + id);
+				// 0=yes, 1=no, 2=cancel
+				if (input == 0) {
+					Persona persona = new Persona();
+					persona.setId(id);
+					boolean res = persona.eliminar();
+					recargar();
+					if (res) {
+						JOptionPane.showMessageDialog(null, "Persona eliminada id:" + id);
+					}
+				}
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 	protected void editar() {
