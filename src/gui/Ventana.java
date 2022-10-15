@@ -97,7 +97,7 @@ public class Ventana extends JFrame {
 	}
 
 	public void verAgregarCliente() {
-		// TODO Auto-generated method stub
+		// T  ODO Auto-generated method stub
 		AgregarCliente ventana = new AgregarCliente(Modo.AGREGAR, null);
 		ventana.setVisible(true);
 		dk.add(ventana);

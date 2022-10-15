@@ -44,7 +44,7 @@ public class AgregarCliente extends JInternalFrame {
 
 	private void cargarCliente() {
 		// TODO Auto-generated method stub
-		if (modo.EDITAR == Modo.EDITAR) {
+		if (modo == Modo.EDITAR) {
 			textEdad.setText(personaDto.getEdad() + "");
 			textNombre.setText(personaDto.getNombre());
 		}
